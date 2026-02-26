@@ -926,10 +926,34 @@ ul { list-style: none; }
 
   .hero {
     min-height: 70vh;
+    padding: calc(var(--nav-height) + 24px) 16px 56px;
+  }
+
+  .hero h1 {
+    white-space: normal;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-location {
+    font-size: 0.8rem;
+  }
+
+  .hero-map-bg {
+    width: 500%;
+    height: 500%;
   }
 
   .section {
     padding: 64px 0;
+  }
+
+  .section-intro {
+    font-size: 0.95rem;
+    margin-bottom: 36px;
   }
 
   .stats-grid {
@@ -945,6 +969,10 @@ ul { list-style: none; }
 
   .standards-grid {
     grid-template-columns: 1fr;
+  }
+
+  .google-map-embed {
+    height: 280px !important;
   }
 
   .phases-timeline::before { left: 20px; }
@@ -963,6 +991,12 @@ ul { list-style: none; }
 
   .invest-value { font-size: 1.5rem; }
 
+  .invest-table th,
+  .invest-table td {
+    padding: 10px 10px;
+    font-size: 0.8rem;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -974,5 +1008,9 @@ ul { list-style: none; }
   .hero-actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .footer-links {
+    gap: 16px;
   }
 }
