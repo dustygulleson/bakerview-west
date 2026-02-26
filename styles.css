@@ -208,7 +208,7 @@ ul { list-style: none; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(26, 39, 68, 0.55) 0%, rgba(26, 39, 68, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(26, 39, 68, 0.6) 0%, rgba(26, 39, 68, 0.8) 100%);
   z-index: 1;
 }
 
