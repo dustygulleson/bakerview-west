@@ -58,31 +58,8 @@
   window.addEventListener('scroll', updateActiveNav);
   updateActiveNav();
 
-  // --- Contact form handling ---
-  var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Collect form data
-      var formData = new FormData(form);
-      var data = {};
-      formData.forEach(function (value, key) {
-        data[key] = value;
-      });
-
-      // Show success message
-      var wrapper = form.parentElement;
-      wrapper.innerHTML =
-        '<div class="form-success">' +
-        '<h3>Thank You</h3>' +
-        '<p>Your inquiry has been received. We will be in touch shortly.</p>' +
-        '</div>';
-
-      // In production, replace the above with an actual form submission
-      // e.g., fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-    });
-  }
+  // --- Contact form is handled by Formsubmit.co ---
+  // Submissions go to dusty@gulleson.com with CC to timcup21@gmail.com
 
   // --- Animate elements on scroll ---
   var observerOptions = {
