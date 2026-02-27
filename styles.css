@@ -473,6 +473,13 @@ ul { list-style: none; }
   display: block;
 }
 
+.property-map {
+  width: 100%;
+  height: 420px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
 /* --- Phases --- */
 .phases-timeline {
   position: relative;
@@ -689,6 +696,41 @@ ul { list-style: none; }
   line-height: 1.7;
 }
 
+/* --- Site Plan --- */
+.siteplan-wrap {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.siteplan-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.siteplan-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.btn-outline-dark:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;
@@ -900,6 +942,7 @@ ul { list-style: none; }
   .contact-grid {
     grid-template-columns: 1fr;
   }
+
 }
 
 @media (max-width: 640px) {
@@ -1006,6 +1049,15 @@ ul { list-style: none; }
   }
 
   .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .siteplan-wrap {
+    padding: 8px;
+  }
+
+  .siteplan-actions {
     flex-direction: column;
     align-items: center;
   }

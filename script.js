@@ -107,4 +107,54 @@
     el.classList.add('animate-in');
     observer.observe(el);
   });
+
+  // --- Leaflet Property Map ---
+  if (typeof L !== 'undefined' && document.getElementById('property-map')) {
+    var map = L.map('property-map', {
+      center: [48.78614, -122.51417],
+      zoom: 16,
+      scrollWheelZoom: false
+    });
+
+    // Esri satellite tiles (free, no API key)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Esri labels overlay
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19
+    }).addTo(map);
+
+    // Property boundary polygon (approximate — adjust coordinates to match actual parcel)
+    var propertyBounds = [
+      [48.78810, -122.51680],   // NW corner
+      [48.78810, -122.51140],   // NE corner
+      [48.78430, -122.51140],   // SE corner
+      [48.78430, -122.51680]    // SW corner
+    ];
+
+    var propertyOutline = L.polygon(propertyBounds, {
+      color: '#c4973b',
+      weight: 3,
+      fillColor: '#c4973b',
+      fillOpacity: 0.15,
+      dashArray: '8, 6'
+    }).addTo(map);
+
+    propertyOutline.bindPopup(
+      '<strong style="font-size:14px;">Bakerview West Business Park</strong><br>' +
+      '21-Acre Mixed-Use Development<br>' +
+      '<em>Bellingham, WA</em>'
+    );
+
+    // Fit map to property bounds with some padding
+    map.fitBounds(propertyOutline.getBounds().pad(0.3));
+
+    // Enable scroll zoom on click
+    map.on('click', function () {
+      map.scrollWheelZoom.enable();
+    });
+  }
 })();
