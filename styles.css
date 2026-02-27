@@ -366,9 +366,9 @@ ul { list-style: none; }
   padding: 28px 24px;
   color: var(--color-white);
 }
-.property-card-header.office { background: var(--color-navy); }
-.property-card-header.flex { background: var(--color-blue); }
-.property-card-header.retail { background: var(--color-gold); }
+.property-card-header.office { background: #d4a843; }
+.property-card-header.flex { background: #e8e8e0; color: var(--color-navy); }
+.property-card-header.retail { background: #c0392b; }
 
 .property-card-icon {
   font-size: 1.4rem;
@@ -379,6 +379,12 @@ ul { list-style: none; }
 .property-card-header h3 {
   font-size: 1.15rem;
   margin-bottom: 4px;
+}
+
+.property-card-header.flex .property-card-icon,
+.property-card-header.flex h3,
+.property-card-header.flex .property-card-acres {
+  color: var(--color-navy);
 }
 
 .property-card-acres {
@@ -727,6 +733,44 @@ ul { list-style: none; }
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.siteplan-legend {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 24px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.legend-office { background: #d4a843; }
+.legend-flex { background: #e8e8e0; }
+.legend-retail { background: #c0392b; }
+
+.legend-label {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.legend-label small {
+  font-weight: 400;
+  color: var(--color-gray-400);
+  margin-left: 4px;
 }
 
 .btn-outline-dark {
