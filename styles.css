@@ -738,8 +738,10 @@ ul { list-style: none; }
 .siteplan-legend {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 48px;
   margin-top: 28px;
+  width: 100%;
 }
 
 .legend-item {
