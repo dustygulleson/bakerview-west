@@ -5,8 +5,8 @@
   <title>Bakerview West Business Park — Brochure</title>
   <style>
     @page {
-      size: letter;
-      margin: 0.5in 0.6in;
+      size: letter portrait;
+      margin: 0.45in 0.55in;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,86 +14,109 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       color: #333a47;
-      line-height: 1.45;
-      font-size: 9pt;
+      line-height: 1.5;
+      font-size: 9.5pt;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* --- Page 1 --- */
     .page { page-break-after: always; }
     .page:last-child { page-break-after: auto; }
 
-    /* --- Header --- */
+    /* --- Header Banner --- */
     .header {
       background: #1a2744;
       color: #fff;
-      padding: 28px 32px;
+      padding: 24px 28px 20px;
       border-radius: 6px;
-      margin-bottom: 20px;
-      text-align: center;
+      margin-bottom: 18px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
     }
     .header h1 {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 22pt;
+      font-size: 20pt;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 4px;
+      line-height: 1.15;
     }
     .header .subtitle {
-      font-size: 11pt;
+      font-size: 10pt;
       color: rgba(255,255,255,0.85);
-      margin-bottom: 2px;
+      margin-top: 4px;
     }
     .header .location {
-      font-size: 8.5pt;
+      font-size: 8pt;
       color: #d4ab52;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .header .website {
+      font-size: 8.5pt;
+      color: #d4ab52;
+      font-weight: 600;
+      text-align: right;
+      white-space: nowrap;
     }
 
     /* --- Section titles --- */
     .section-title {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 13pt;
+      font-size: 12pt;
       color: #1a2744;
       margin-bottom: 8px;
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       border-bottom: 2px solid #c4973b;
     }
+    .section-title.no-border {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
 
-    /* --- Overview text --- */
+    .sub-title {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #1a2744;
+      margin-bottom: 5px;
+    }
+
+    /* --- Overview --- */
     .overview-text {
       font-size: 9pt;
       color: #5c6374;
-      line-height: 1.5;
-      margin-bottom: 12px;
+      line-height: 1.55;
+      margin-bottom: 14px;
     }
 
     /* --- Stats row --- */
     .stats-row {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 18px;
     }
     .stat-box {
       flex: 1;
       text-align: center;
-      padding: 10px 8px;
+      padding: 10px 6px;
       border: 1px solid #dde1e7;
       border-radius: 5px;
+      background: #f8f9fa;
     }
     .stat-num {
       display: block;
       font-family: Georgia, serif;
-      font-size: 18pt;
+      font-size: 17pt;
       font-weight: 700;
       color: #1a2744;
       line-height: 1.2;
     }
     .stat-lbl {
-      font-size: 7pt;
+      font-size: 6.5pt;
       color: #8e95a2;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -110,7 +133,7 @@
     .legend-row {
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 36px;
       margin-top: 8px;
     }
     .legend-item {
@@ -119,8 +142,8 @@
       gap: 8px;
     }
     .legend-swatch {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 3px;
       border: 1px solid rgba(0,0,0,0.12);
     }
@@ -135,14 +158,14 @@
     .legend-label small {
       font-weight: 400;
       color: #8e95a2;
-      margin-left: 3px;
+      margin-left: 2px;
     }
 
-    /* --- Property Cards row --- */
+    /* --- Property Cards --- */
     .cards-row {
       display: flex;
-      gap: 14px;
-      margin-bottom: 14px;
+      gap: 12px;
+      margin-bottom: 0;
     }
     .card {
       flex: 1;
@@ -151,18 +174,18 @@
       border: 1px solid #dde1e7;
     }
     .card-head {
-      padding: 12px 14px;
+      padding: 10px 12px;
       color: #fff;
     }
     .card-head.retail { background: #c0392b; }
     .card-head.office { background: #d4a843; }
     .card-head.flex { background: #e8e8e0; color: #1a2744; }
-    .card-head h3 { font-size: 10pt; margin-bottom: 1px; }
-    .card-head .acres { font-size: 7.5pt; opacity: 0.85; font-weight: 600; }
-    .card-body { padding: 10px 14px; }
+    .card-head h3 { font-size: 9.5pt; margin-bottom: 1px; }
+    .card-head .acres { font-size: 7pt; opacity: 0.85; font-weight: 600; }
+    .card-body { padding: 8px 12px; }
     .card-body li {
       list-style: none;
-      padding: 3px 0;
+      padding: 2.5px 0;
       font-size: 8pt;
       color: #5c6374;
       border-bottom: 1px solid #eef0f3;
@@ -171,18 +194,18 @@
     .card-body li::before {
       content: '\2014';
       color: #8e95a2;
-      margin-right: 6px;
+      margin-right: 5px;
     }
 
     /* --- Two-column layout --- */
     .two-col {
       display: flex;
-      gap: 28px;
+      gap: 24px;
     }
     .col-left { flex: 1; }
     .col-right { flex: 1; }
 
-    /* --- Location advantages --- */
+    /* --- Location --- */
     .advantage { margin-bottom: 10px; }
     .advantage h3 {
       font-size: 9pt;
@@ -192,20 +215,20 @@
     .advantage p {
       font-size: 8pt;
       color: #5c6374;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     /* --- Phases --- */
-    .phase { margin-bottom: 10px; display: flex; gap: 10px; }
+    .phase { margin-bottom: 10px; display: flex; gap: 8px; }
     .phase-num {
       flex-shrink: 0;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: #1a2744;
       color: #fff;
       font-family: Georgia, serif;
-      font-size: 11pt;
+      font-size: 10pt;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -214,7 +237,7 @@
     .phase-info { flex: 1; }
     .phase-info h3 { font-size: 9pt; color: #1a2744; margin-bottom: 1px; }
     .phase-pct { font-size: 7.5pt; color: #c4973b; font-weight: 600; }
-    .phase-sf { font-size: 7.5pt; color: #8e95a2; font-weight: 600; margin-bottom: 4px; }
+    .phase-sf { font-size: 7.5pt; color: #8e95a2; font-weight: 600; margin-bottom: 3px; }
     .phase-info li {
       list-style: none;
       font-size: 7.5pt;
@@ -224,7 +247,7 @@
     .phase-info li::before {
       content: '\2022';
       color: #c4973b;
-      margin-right: 5px;
+      margin-right: 4px;
       font-weight: 700;
     }
 
@@ -232,7 +255,7 @@
     .invest-row {
       display: flex;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .invest-box {
       flex: 1;
@@ -264,7 +287,7 @@
     .comp-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .comp-table th {
       background: #1a2744;
@@ -272,24 +295,24 @@
       font-size: 7pt;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 6px 8px;
+      padding: 5px 8px;
       text-align: left;
       font-weight: 600;
     }
     .comp-table th:first-child { border-radius: 4px 0 0 0; }
     .comp-table th:last-child { border-radius: 0 4px 0 0; }
     .comp-table td {
-      padding: 5px 8px;
+      padding: 4px 8px;
       font-size: 8pt;
       color: #5c6374;
       border-bottom: 1px solid #eef0f3;
     }
 
     /* --- Risk list --- */
-    .risk-list { margin-bottom: 10px; }
+    .risk-list { margin-bottom: 8px; }
     .risk-list li {
       list-style: none;
-      padding: 3px 0;
+      padding: 2.5px 0;
       font-size: 8pt;
       color: #5c6374;
       border-bottom: 1px solid #eef0f3;
@@ -298,55 +321,92 @@
     .risk-list li::before {
       content: '\2713';
       color: #c4973b;
-      margin-right: 6px;
+      margin-right: 5px;
       font-weight: 700;
     }
 
-    /* --- Contact footer --- */
+    /* --- Design Standards --- */
+    .standards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      margin-bottom: 14px;
+    }
+    .standard-item {
+      flex: 1 1 45%;
+    }
+    .standard-item strong {
+      display: block;
+      font-size: 8pt;
+      color: #1a2744;
+      margin-bottom: 1px;
+    }
+    .standard-item p {
+      font-size: 7.5pt;
+      color: #5c6374;
+      line-height: 1.4;
+    }
+
+    /* --- Financing box --- */
+    .financing-box {
+      background: #f5f6f8;
+      border-radius: 5px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+    }
+    .financing-box p {
+      font-size: 8pt;
+      color: #5c6374;
+      line-height: 1.5;
+    }
+
+    /* --- Contact bar --- */
     .contact-bar {
       background: #1a2744;
       color: #fff;
-      padding: 14px 24px;
+      padding: 12px 20px;
       border-radius: 5px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 12px;
     }
     .contact-bar span {
-      font-size: 8.5pt;
+      font-size: 8pt;
     }
     .contact-bar .brand {
       font-family: Georgia, serif;
-      font-size: 10pt;
+      font-size: 9.5pt;
       font-weight: 700;
     }
     .contact-bar .gold { color: #d4ab52; }
 
-    .sub-title {
-      font-size: 10pt;
-      font-weight: 700;
-      color: #1a2744;
-      margin-bottom: 6px;
-    }
-
     .disclaimer {
       text-align: center;
-      font-size: 6.5pt;
+      font-size: 6pt;
       color: #8e95a2;
-      margin-top: 8px;
+      margin-top: 6px;
       line-height: 1.4;
     }
+
+    /* --- Divider --- */
+    .spacer { margin-bottom: 16px; }
+    .spacer-sm { margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
   <!-- ==================== PAGE 1 ==================== -->
   <div class="page">
+
     <div class="header">
-      <h1>Bakerview West Business Park</h1>
-      <div class="subtitle">A Premier 21-Acre Mixed-Use Commercial Development</div>
-      <div class="location">Bellingham, WA &mdash; Bakerview / I-5 Corridor</div>
+      <div class="header-top">
+        <div>
+          <h1>Bakerview West Business Park</h1>
+          <div class="subtitle">A Premier 21-Acre Mixed-Use Commercial Development</div>
+          <div class="location">Bellingham, WA &mdash; Bakerview / I-5 Corridor</div>
+        </div>
+        <div class="website">bakerviewwest.com</div>
+      </div>
     </div>
 
     <div class="section-title">Project Overview</div>
@@ -363,7 +423,7 @@
       </div>
       <div class="stat-box">
         <span class="stat-num">3</span>
-        <span class="stat-lbl">Development Phases</span>
+        <span class="stat-lbl">Phases</span>
       </div>
       <div class="stat-box">
         <span class="stat-num">Mixed</span>
@@ -373,7 +433,7 @@
 
     <div class="siteplan-section">
       <div class="section-title">Site Plan</div>
-      <img class="siteplan-img" src="siteplan.png" alt="Site Plan">
+      <img class="siteplan-img" src="siteplan.png" alt="Bakerview West Business Park — Concept Site Development Plan">
       <div class="legend-row">
         <div class="legend-item">
           <div class="legend-swatch sw-retail"></div>
@@ -435,13 +495,15 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- ==================== PAGE 2 ==================== -->
   <div class="page">
-    <div class="two-col" style="margin-bottom: 16px;">
+
+    <div class="two-col spacer">
       <div class="col-left">
-        <div class="section-title">Location</div>
+        <div class="section-title">Location Advantages</div>
         <div class="advantage">
           <h3>I-5 Visibility &amp; Access</h3>
           <p>High-traffic corridor with excellent visibility and direct interstate access for employees, customers, and logistics.</p>
@@ -464,20 +526,21 @@
         <div class="phase">
           <div class="phase-num">1</div>
           <div class="phase-info">
-            <h3>Phase 1 <span class="phase-pct">25%</span></h3>
+            <h3>Phase 1 <span class="phase-pct">25% of Project</span></h3>
             <div class="phase-sf">77,500 SF</div>
             <ul>
-              <li>Site prep and infrastructure</li>
+              <li>Site preparation and infrastructure</li>
               <li>Central amenities and landscaping</li>
               <li>Build-to-suit for pre-committed buyers</li>
               <li>Pre-sales of industrial/flex buildings</li>
+              <li>Potential retail pad sites</li>
             </ul>
           </div>
         </div>
         <div class="phase">
           <div class="phase-num">2</div>
           <div class="phase-info">
-            <h3>Phase 2 <span class="phase-pct">35%</span></h3>
+            <h3>Phase 2 <span class="phase-pct">35% of Project</span></h3>
             <div class="phase-sf">108,500 SF</div>
             <ul>
               <li>Additional flex/industrial with BTS options</li>
@@ -489,7 +552,7 @@
         <div class="phase">
           <div class="phase-num">3</div>
           <div class="phase-info">
-            <h3>Phase 3 <span class="phase-pct">40%</span></h3>
+            <h3>Phase 3 <span class="phase-pct">40% of Project</span></h3>
             <div class="phase-sf">124,000 SF</div>
             <ul>
               <li>Remaining development per market performance</li>
@@ -517,11 +580,11 @@
       </div>
       <div class="invest-box">
         <span class="invest-val">65%</span>
-        <span class="invest-lbl">Loan-to-Cost</span>
+        <span class="invest-lbl">Loan-to-Cost Ratio</span>
       </div>
     </div>
 
-    <div class="two-col" style="margin-bottom: 12px;">
+    <div class="two-col spacer-sm">
       <div class="col-left">
         <div class="sub-title">Market Comparables</div>
         <table class="comp-table">
@@ -556,9 +619,39 @@
           <li>Stress-tested pricing at -10% and -15% scenarios</li>
           <li>True NNN structures and early unit sales</li>
         </ul>
+      </div>
+    </div>
 
-        <div class="sub-title">Buyer Financing Support</div>
-        <p style="font-size: 8pt; color: #5c6374; line-height: 1.5;">Competitive financing through established lender relationships, including conventional owner-user loans, SBA-backed financing, and build-to-suit capital solutions.</p>
+    <div class="financing-box">
+      <div class="sub-title">Buyer Financing Support</div>
+      <p>We facilitate access to competitive financing through established lender relationships, including conventional owner-user loans, SBA-backed financing, and build-to-suit capital solutions.</p>
+    </div>
+
+    <div class="sub-title">Design &amp; Construction Standards</div>
+    <div class="standards-grid">
+      <div class="standard-item">
+        <strong>Building Types</strong>
+        <p>Single-story, mezzanine, and multi-story build-to-suit options</p>
+      </div>
+      <div class="standard-item">
+        <strong>Floor Plates</strong>
+        <p>Flexible layouts with clear heights for light industrial users</p>
+      </div>
+      <div class="standard-item">
+        <strong>Building Systems</strong>
+        <p>Energy-efficient HVAC, modern lighting, quality mechanicals</p>
+      </div>
+      <div class="standard-item">
+        <strong>Exterior Finishes</strong>
+        <p>Above-standard finishes with cohesive campus branding</p>
+      </div>
+      <div class="standard-item">
+        <strong>Parking</strong>
+        <p>Ample, flexible parking for a range of business requirements</p>
+      </div>
+      <div class="standard-item">
+        <strong>Common Areas</strong>
+        <p>Landscaped green spaces and maintained campus grounds</p>
       </div>
     </div>
 
@@ -570,6 +663,7 @@
     </div>
 
     <div class="disclaimer">&copy; 2026 Bakerview West Business Park. All rights reserved. All information is subject to change. This is not an offer to sell or a solicitation of an offer to buy. Prospective buyers should conduct their own due diligence.</div>
+
   </div>
 
 </body>
