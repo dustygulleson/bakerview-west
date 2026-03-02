@@ -134,4 +134,35 @@
       map.scrollWheelZoom.enable();
     });
   }
+
+  // --- Exit Intent Popup Logic (marketing-skill) ---
+  var popup = document.getElementById('exit-popup');
+  var popupClose = document.getElementById('popup-close');
+  var popupTriggered = localStorage.getItem('bakerviewPopupSeen');
+
+  if (popup && popupClose && !popupTriggered) {
+    var checkExitIntent = function (e) {
+      if (e.clientY < 15) { // Mouse leaves top of viewport
+        popup.style.display = 'flex';
+        localStorage.setItem('bakerviewPopupSeen', 'true');
+        document.removeEventListener('mouseout', checkExitIntent);
+      }
+    };
+
+    // Delay listener to prevent immediate triggers on load
+    setTimeout(function () {
+      document.addEventListener('mouseout', checkExitIntent);
+    }, 3000);
+
+    popupClose.addEventListener('click', function () {
+      popup.style.display = 'none';
+    });
+
+    // Close on overlay click
+    popup.addEventListener('click', function (e) {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  }
 })();
