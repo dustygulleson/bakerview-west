@@ -184,14 +184,17 @@
 
 <body>
 
+  <!-- Skip Navigation (WCAG 2.4.1) -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Primary navigation">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">Bakerview West</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links" id="nav-links">
+      <ul class="nav-links" id="nav-links" role="list">
         <li><a href="#overview">Overview</a></li>
         <li><a href="#siteplan">Site Plan</a></li>
         <li><a href="#property">Property</a></li>
@@ -206,8 +209,10 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <iframe class="hero-map-bg"
+      title="Aerial map of Bakerview West Business Park location in Bellingham, WA"
       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10600!2d-122.51417!3d48.78614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus"
-      allowfullscreen="" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      allowfullscreen="" loading="eager" referrerpolicy="no-referrer-when-downgrade"
+      aria-hidden="true" tabindex="-1"></iframe>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Bakerview West Business Park</h1>
@@ -219,6 +224,8 @@
       </div>
     </div>
   </section>
+
+  <main id="main-content">
 
   <!-- Overview -->
   <section class="section" id="overview">
@@ -250,19 +257,19 @@
 
       <div class="features-row">
         <div class="feature">
-          <div class="feature-icon">&#9678;</div>
+          <div class="feature-icon" aria-hidden="true">&#9678;</div>
           <h3>Campus-Style Design</h3>
           <p>Landscaped common areas, cohesive architectural branding, and above-standard exterior finishes create a
             professional, inviting environment.</p>
         </div>
         <div class="feature">
-          <div class="feature-icon">&#9678;</div>
+          <div class="feature-icon" aria-hidden="true">&#9678;</div>
           <h3>Flexible Commercial Spaces</h3>
           <p>Scalable building footprints with flexible floor plates and mezzanine options accommodate a wide range of
             business needs.</p>
         </div>
         <div class="feature">
-          <div class="feature-icon">&#9678;</div>
+          <div class="feature-icon" aria-hidden="true">&#9678;</div>
           <h3>New Construction Standards</h3>
           <p>Energy-efficient HVAC and lighting, modern building systems, and clear heights suitable for light
             industrial users.</p>
@@ -312,7 +319,7 @@
       <div class="property-grid">
         <div class="property-card">
           <div class="property-card-header retail">
-            <div class="property-card-icon">&#9632;</div>
+            <div class="property-card-icon" aria-hidden="true">&#9632;</div>
             <h3>Retail</h3>
             <span class="property-card-acres">~3 Acres</span>
           </div>
@@ -328,7 +335,7 @@
 
         <div class="property-card">
           <div class="property-card-header office">
-            <div class="property-card-icon">&#9632;</div>
+            <div class="property-card-icon" aria-hidden="true">&#9632;</div>
             <h3>Office</h3>
             <span class="property-card-acres">~7 Acres</span>
           </div>
@@ -344,7 +351,7 @@
 
         <div class="property-card">
           <div class="property-card-header flex">
-            <div class="property-card-icon">&#9632;</div>
+            <div class="property-card-icon" aria-hidden="true">&#9632;</div>
             <h3>Light Industrial / Flex</h3>
             <span class="property-card-acres">~11 Acres</span>
           </div>
@@ -423,6 +430,7 @@
         </div>
         <div class="location-map-wrap">
           <iframe class="google-map"
+            title="Google Maps showing Bakerview West Business Park location along the I-5 corridor in Bellingham, WA"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5300!2d-122.51417!3d48.78614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ3JzEwLjEiTiAxMjLCsDMwJzUxLjAiVw!5e0!3m2!1sen!2sus"
             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -516,11 +524,11 @@
       <div class="investment-details">
         <div class="invest-detail-col">
           <h3>Market Comparables</h3>
-          <table class="invest-table">
+          <table class="invest-table" aria-label="Market Comparables — price per square foot by property type">
             <thead>
               <tr>
-                <th>Product Type</th>
-                <th>Market Range</th>
+                <th scope="col">Product Type</th>
+                <th scope="col">Market Range</th>
               </tr>
             </thead>
             <tbody>
@@ -568,40 +576,40 @@
 
       <div class="contact-grid">
         <div class="contact-form-wrap">
-          <p
-            style="font-size: 8.5pt; color: #5c6374; border-left: 3px solid #c4973b; padding-left: 10px; margin-bottom: 20px;">
+          <p class="form-guarantee">
             <strong>Quick Response Guarantee:</strong> Submit your inquiry below and our sales team will respond within
             24 business hours. No obligations.
           </p>
+          <div aria-live="polite" aria-atomic="true" id="form-status" class="sr-only"></div>
           <form class="contact-form" id="contact-form" action="https://formsubmit.co/dusty@gulleson.com" method="POST">
             <input type="hidden" name="_cc" value="timcup21@gmail.com">
             <input type="hidden" name="_subject" value="Bakerview West — New Inquiry">
             <input type="hidden" name="_next" value="https://bakerviewwest.us/#contact">
             <input type="hidden" name="_captcha" value="true">
-            <input type="text" name="_honey" style="display:none">
+            <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off">
             <div class="form-row">
               <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name">Name <span class="required-indicator" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" required aria-required="true" autocomplete="name">
               </div>
               <div class="form-group">
                 <label for="company">Company</label>
-                <input type="text" id="company" name="company">
+                <input type="text" id="company" name="company" autocomplete="organization">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email">Email <span class="required-indicator" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
               </div>
             </div>
             <div class="form-group">
               <label for="interest">I'm interested in...</label>
-              <select id="interest" name="interest">
+              <select id="interest" name="interest" autocomplete="off">
                 <option value="">Select an option</option>
                 <option value="office">Office Space</option>
                 <option value="flex">Light Industrial / Flex Space</option>
@@ -613,7 +621,7 @@
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4"></textarea>
+              <textarea id="message" name="message" rows="4" autocomplete="off"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-full">Send Inquiry</button>
           </form>
@@ -634,13 +642,15 @@
             </p>
           </div>
           <div class="contact-info-block">
-            <a href="BakerviewWestBrochure.pdf" class="btn btn-primary" target="_blank" download
-              style="display:block; text-align:center; margin-top: 8px;">&#11015; Download Brochure</a>
+            <a href="BakerviewWestBrochure.pdf" class="btn btn-primary btn-download" target="_blank" download
+              aria-label="Download Bakerview West Brochure (PDF, opens in new tab)">&#11015; Download Brochure</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  </main><!-- /#main-content -->
 
   <!-- Footer -->
   <footer class="footer">
@@ -671,22 +681,23 @@
   <script src="script.js"></script>
 
   <!-- Exit Intent Popup -->
-  <div id="exit-popup" class="popup-overlay" style="display: none;">
+  <div id="exit-popup" class="popup-overlay" style="display: none;"
+    role="dialog" aria-modal="true" aria-labelledby="popup-heading">
     <div class="popup-content">
-      <button class="popup-close" id="popup-close">&times;</button>
-      <h3 style="font-family: Georgia, serif; font-size: 16pt; color: #1a2744; margin-bottom: 10px;">Wait! Don't leave
-        without the full Prospectus.</h3>
-      <p style="font-size: 9.5pt; color: #5c6374; margin-bottom: 20px;">
+      <button class="popup-close" id="popup-close" aria-label="Close dialog">&times;</button>
+      <h3 id="popup-heading" class="popup-heading">Wait! Don't leave without the full Prospectus.</h3>
+      <p class="popup-body">
         Get instant access to detailed floor plans, full pricing metrics, and in-depth market comps.
       </p>
       <form id="popup-form" action="https://formsubmit.co/dusty@gulleson.com" method="POST">
         <input type="hidden" name="_subject" value="Bakerview West — Prospectus Download">
         <input type="hidden" name="_next" value="https://bakerviewwest.us/BakerviewWestBrochure.pdf">
-        <div style="margin-bottom: 15px;">
-          <input type="email" name="email" placeholder="Enter your best email..." required
-            style="width: 100%; padding: 12px; border: 1px solid #dde1e7; border-radius: 4px; font-size: 10pt;">
+        <div class="popup-field">
+          <label for="popup-email" class="sr-only">Email address</label>
+          <input type="email" id="popup-email" name="email" placeholder="Enter your best email..."
+            required aria-required="true" autocomplete="email" class="popup-email-input">
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Download Prospectus PDF</button>
+        <button type="submit" class="btn btn-primary btn-full">Download Prospectus PDF</button>
       </form>
     </div>
   </div>

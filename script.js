@@ -1,6 +1,6 @@
 /* ===================================
    Bakerview West Business Park
-   Scripts
+   Scripts — WCAG 2.2 Level AA
    =================================== */
 
 (function () {
@@ -16,12 +16,14 @@
     }
   });
 
-  // --- Mobile nav toggle ---
+  // --- Mobile nav toggle (WCAG 4.1.2: aria-expanded) ---
   var toggle = document.getElementById('nav-toggle');
   var links = document.getElementById('nav-links');
 
   toggle.addEventListener('click', function () {
-    links.classList.toggle('open');
+    var isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
   });
 
   // Close mobile nav on link click
@@ -29,6 +31,8 @@
   navAnchors.forEach(function (anchor) {
     anchor.addEventListener('click', function () {
       links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation menu');
     });
   });
 
@@ -47,8 +51,10 @@
       if (scrollPos >= top && scrollPos < top + height) {
         navLinks.forEach(function (link) {
           link.classList.remove('active');
+          link.removeAttribute('aria-current');
           if (link.getAttribute('href') === '#' + id) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'location');
           }
         });
       }
@@ -93,23 +99,20 @@
       scrollWheelZoom: false
     });
 
-    // Esri satellite tiles (free, no API key)
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri',
       maxZoom: 19
     }).addTo(map);
 
-    // Esri labels overlay
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 19
     }).addTo(map);
 
-    // Property boundary polygon (approximate — adjust coordinates to match actual parcel)
     var propertyBounds = [
-      [48.78810, -122.51680],   // NW corner
-      [48.78810, -122.51140],   // NE corner
-      [48.78430, -122.51140],   // SE corner
-      [48.78430, -122.51680]    // SW corner
+      [48.78810, -122.51680],
+      [48.78810, -122.51140],
+      [48.78430, -122.51140],
+      [48.78430, -122.51680]
     ];
 
     var propertyOutline = L.polygon(propertyBounds, {
@@ -126,42 +129,87 @@
       '<em>Bellingham, WA</em>'
     );
 
-    // Fit map to property bounds with some padding
     map.fitBounds(propertyOutline.getBounds().pad(0.3));
 
-    // Enable scroll zoom on click
     map.on('click', function () {
       map.scrollWheelZoom.enable();
     });
   }
 
-  // --- Exit Intent Popup Logic (marketing-skill) ---
+  // --- Exit Intent Popup (WCAG 2.1.1, 4.1.2: focus trap + Escape key) ---
   var popup = document.getElementById('exit-popup');
   var popupClose = document.getElementById('popup-close');
   var popupTriggered = localStorage.getItem('bakerviewPopupSeen');
+  var lastFocusedElement = null;
+
+  // Collect focusable elements within the popup
+  function getFocusableElements(container) {
+    return Array.from(container.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    ));
+  }
+
+  function openPopup() {
+    popup.style.display = 'flex';
+    lastFocusedElement = document.activeElement;
+    // Move focus to close button on open
+    setTimeout(function () {
+      popupClose.focus();
+    }, 50);
+  }
+
+  function closePopup() {
+    popup.style.display = 'none';
+    // Return focus to the element that had it before opening
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
+  }
+
+  // Focus trap: constrain Tab / Shift+Tab inside popup (WCAG 2.1.2)
+  popup.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closePopup();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      var focusable = getFocusableElements(popup);
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  });
 
   if (popup && popupClose && !popupTriggered) {
     var checkExitIntent = function (e) {
-      if (e.clientY < 15) { // Mouse leaves top of viewport
-        popup.style.display = 'flex';
+      if (e.clientY < 15) {
+        openPopup();
         localStorage.setItem('bakerviewPopupSeen', 'true');
         document.removeEventListener('mouseout', checkExitIntent);
       }
     };
 
-    // Delay listener to prevent immediate triggers on load
     setTimeout(function () {
       document.addEventListener('mouseout', checkExitIntent);
     }, 3000);
 
-    popupClose.addEventListener('click', function () {
-      popup.style.display = 'none';
-    });
+    popupClose.addEventListener('click', closePopup);
 
-    // Close on overlay click
     popup.addEventListener('click', function (e) {
       if (e.target === popup) {
-        popup.style.display = 'none';
+        closePopup();
       }
     });
   }
